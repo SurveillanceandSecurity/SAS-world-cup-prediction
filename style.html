@@ -1,0 +1,520 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+    <title>SAS World Cup Predictor 2026 | Official Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0f0e 0%, #0a1f1c 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .sas-game-container {
+            max-width: 1300px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ========== MAIN GAME BANNER ========== */
+        .hero-game-banner {
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,200,70,0.3);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        /* BACKGROUND IMAGE - More visible with overlay adjustment */
+        .banner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=1600&h=600&fit=crop');
+            background-size: cover;
+            background-position: center 30%;
+            z-index: 0;
+        }
+        
+        /* Player images overlay */
+        .player-images {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 3;
+            padding: 1rem;
+        }
+        .player-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #FFD966;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            background: #1e3a38;
+        }
+        
+        /* SAS Logo placement - top left prominent */
+        .sas-logo-placement {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 60px;
+            border: 1px solid #FFD966;
+        }
+        .sas-logo-circle {
+            width: 50px;
+            height: 50px;
+            background: #E8B530;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .sas-logo-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .sas-logo-text {
+            color: #FFE6A3;
+            font-weight: 800;
+        }
+        .sas-logo-text .main {
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+        .sas-logo-text .sub {
+            font-size: 0.55rem;
+            opacity: 0.8;
+        }
+
+        /* Top status bar */
+        .status-bar {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(255,200,70,0.3);
+            position: relative;
+            z-index: 5;
+        }
+
+        .live-badge {
+            background: #ff3b3b;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        /* Hero content with better visibility */
+        .hero-content {
+            position: relative;
+            z-index: 4;
+            padding: 6rem 2rem 2rem;
+            background: linear-gradient(135deg, rgba(0,0,0,0.45), rgba(0,0,0,0.55));
+        }
+
+        .game-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .game-title h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFD966, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        .game-title .tagline {
+            color: #FFE6A3;
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+
+        /* STATS GRID */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .stat-card {
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px);
+            border-radius: 24px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid rgba(255,200,70,0.4);
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #FFD966;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            color: #c7e6e0;
+        }
+
+        /* Feature row */
+        .feature-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            padding: 1rem;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 0.5rem;
+        }
+        .feature-icon {
+            width: 45px;
+            height: 45px;
+            background: #1e4a46;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            color: #FFD966;
+            font-size: 1.2rem;
+        }
+        .feature-title {
+            font-weight: 800;
+            color: #FFE6A3;
+            font-size: 0.75rem;
+        }
+        .feature-desc {
+            font-size: 0.6rem;
+            color: #a8d8d0;
+        }
+
+        /* Community message */
+        .community-message {
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(8px);
+            border-radius: 20px;
+            padding: 1rem;
+            text-align: center;
+            border-left: 4px solid #FFD966;
+        }
+        .community-message p {
+            color: #f0e6c5;
+            font-size: 0.85rem;
+        }
+        .champion-text {
+            font-weight: 800;
+            color: #FFD966;
+            margin-top: 0.5rem;
+        }
+
+        /* Countdown */
+        .countdown-banner {
+            background: rgba(14,46,42,0.95);
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid #f5c542;
+            position: relative;
+            z-index: 4;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .cd-block {
+            background: rgba(0,0,0,0.5);
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+            min-width: 60px;
+        }
+        .cd-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #FFD966;
+        }
+        .cd-label {
+            font-size: 0.6rem;
+            color: #c7e6e0;
+        }
+
+        /* ========== FORM SECTION ========== */
+        .form-section {
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .form-header h2 {
+            font-size: 1.8rem;
+            color: #1f534e;
+            font-weight: 800;
+            text-align: center;
+        }
+        .form-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(95deg, #1a403b, #0e2e2a);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            text-decoration: none;
+            margin: 1rem 0;
+            transition: transform 0.2s;
+            box-shadow: 0 6px 0 #0a201d;
+        }
+        .form-link-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #0a201d;
+        }
+        .info-note {
+            background: #eef6f0;
+            border-radius: 20px;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #1c6b5c;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            color: #6a7c74;
+            font-size: 0.7rem;
+        }
+
+        /* Player image placeholder style */
+        .player-img-placeholder {
+            background: linear-gradient(135deg, #1e4a46, #0e2e2a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #FFD966;
+        }
+
+        @media (max-width: 700px) {
+            body { padding: 0.8rem; }
+            .game-title h1 { font-size: 1.5rem; }
+            .hero-content { padding: 5rem 1rem 1.5rem; }
+            .sas-logo-placement { top: 10px; left: 10px; padding: 0.3rem 0.8rem; }
+            .sas-logo-circle { width: 35px; height: 35px; }
+            .player-img { width: 45px; height: 45px; }
+            .feature-strip { border-radius: 20px; }
+            .form-section { padding: 1.2rem; }
+            .form-link-btn { font-size: 0.85rem; padding: 0.7rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="sas-game-container">
+    <div class="hero-game-banner">
+        <!-- Background Image - More visible -->
+        <div class="banner-bg"></div>
+        
+        <!-- SAS LOGO PLACEMENT (Top Left - Prominent) -->
+        <div class="sas-logo-placement">
+            <div class="sas-logo-circle">
+                <!-- Replace this src with your actual SAS logo image URL -->
+                <img src="./image/WhatsApp Image 2026-01-17 at 12.44.19 PM.jpeg" alt="SAS Logo">
+            </div>
+            <div class="sas-logo-text">
+                <div class="main">SURVEILLANCE & SECURITY</div>
+                <div class="sub">WORLD CUP PREDICTOR 2026</div>
+            </div>
+        </div>
+        
+        <!-- PLAYER IMAGES (Bottom Right) -->
+        <div class="player-images">
+            <img class="player-img player-img-placeholder" src="./image/WhatsApp Image 2026-06-03 at 9.45.48 AM.jpeg" alt="Player 1">
+            <img class="player-img player-img-placeholder" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e4a46'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23FFD966' font-size='40'%3E🏃%3C/text%3E%3C/svg%3E" alt="Player 2">
+            <img class="player-img player-img-placeholder" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e4a46'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%23FFD966' font-size='40'%3E🏆%3C/text%3E%3C/svg%3E" alt="Trophy">
+        </div>
+
+        <!-- Top Status -->
+        <div class="status-bar">
+            <div class="live-badge">
+                <i class="fas fa-circle"></i> PREDICTIONS OPEN · WORLD CUP 2026
+            </div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <div class="game-title">
+                <h1>⚡ SAS WORLD CUP CHALLENGE ⚡</h1>
+                <div class="tagline">PREDICT · COMPETE · CONQUER</div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">48</div>
+                    <div class="stat-label">TEAMS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">GROUPS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">🏆</div>
+                    <div class="stat-label">GRAND PRIZE</div>
+                </div>
+            </div>
+
+            <!-- Feature Strip -->
+            <div class="feature-strip">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="feature-title">SELECT YOUR CHOICE</div>
+                     <div class="feature-desc">from letter A-L</div>
+
+                 </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-check-double"></i></div>
+                    <div class="feature-title">PREDICT</div>
+                    <div class="feature-desc">Pick winners</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="feature-title">EARN POINTS</div>
+                    <div class="feature-desc">Score correctly</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-gem"></i></div>
+                    <div class="feature-title">WIN PRIZES</div>
+                    <div class="feature-desc">Top predictors win!</div>
+                </div>
+            </div>
+
+            <!-- Community Message -->
+            <div class="community-message">
+                <p>⚡ Thank you for being part of the SAS Surveillance & Security community ⚡</p>
+                <p>We're looking forward to seeing who rises to the top of the leaderboard and earns the title of <strong>SAS World Cup Champion</strong>.</p>
+                <p class="champion-text">Make your predictions, trust your instincts, and enjoy the tournament. Good luck!</p>
+            </div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-banner">
+            <div style="font-size:0.7rem; color:#FFE6A3;">⏱️ COUNTDOWN TO WORLD CUP 2026 KICK-OFF</div>
+            <div class="countdown-timer" id="countdownTimer">
+                <div class="cd-block"><span class="cd-number" id="days">--</span><br><span class="cd-label">Days</span></div>
+                <div class="cd-block"><span class="cd-number" id="hours">--</span><br><span class="cd-label">Hours</span></div>
+                <div class="cd-block"><span class="cd-number" id="minutes">--</span><br><span class="cd-label">Mins</span></div>
+                <div class="cd-block"><span class="cd-number" id="seconds">--</span><br><span class="cd-label">Secs</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== FORM SECTION WITH LINK ========== -->
+    <div class="form-section">
+        <div class="form-header">
+            <h2>📋 ENTER SAS WORLD CUP PREDICTION</h2>
+            <p style="color:#6b5a3d; text-align:center;">Fill out the official prediction form to participate and win amazing prizes!</p>
+        </div>
+        
+        <div style="text-align: center;">
+            <a href="https://surveillanceandsecurity.github.io/SAS-world-cup-prediction/" target="_blank" class="form-link-btn">
+                <i class="fas fa-pen-alt"></i> ACCESS PREDICTION FORM
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="info-note">
+            <i class="fas fa-trophy" style="color:#f0b429;"></i> 
+            Make your group stage picks, submit your contact info, and compete for the SAS Champion title. 
+            Only one entry per person. Predictions close before the World Cup starts (June 11, 2026)!
+        </div>
+    </div>
+
+    <footer>
+        © SAS Surveillance and Security — Official World Cup Predictor 2026. May the best predictor win! 🏆
+    </footer>
+</div>
+
+<script>
+    // Countdown Timer to World Cup 2026 (June 11, 2026)
+    const WORLD_CUP_DATE = new Date(2026, 5, 11, 0, 0, 0);
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = WORLD_CUP_DATE - now;
+        
+        if (distance < 0) {
+            document.getElementById('days').innerHTML = "00";
+            document.getElementById('hours').innerHTML = "00";
+            document.getElementById('minutes').innerHTML = "00";
+            document.getElementById('seconds').innerHTML = "00";
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+        document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
+```
