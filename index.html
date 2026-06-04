@@ -1,0 +1,699 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>SAS World Cup Predictor 2026 | Official Sweepstakes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(circle at 10% 30%, #0c2a27 0%, #051412 100%);
+            font-family: 'Inter', sans-serif;
+            padding: 2rem 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .worldcup-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 48px;
+            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 200, 70, 0.3);
+            overflow: hidden;
+        }
+
+        /* BANNER */
+        .hero-banner {
+            background: linear-gradient(125deg, #071e1b 0%, #0c302b 100%);
+            padding: 1.8rem 2.5rem 1.5rem;
+            position: relative;
+            overflow: visible;
+        }
+
+        /* WORLD CUP TROPHY */
+        .worldcup-trophy-corner {
+            position: absolute;
+            bottom: -20px;
+            right: 25px;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+            z-index: 5;
+            filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+        }
+        .worldcup-trophy-corner img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .banner-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            position: relative;
+            z-index: 6;
+        }
+
+        /* SAS LOGO */
+        .sas-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(8px);
+            padding: 0.6rem 1.8rem;
+            border-radius: 80px;
+            border: 1px solid rgba(255, 210, 90, 0.5);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+        }
+        
+        .sas-logo-image {
+            width: 52px;
+            height: 52px;
+            border-radius: 60px;
+            background: #E8B530;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 0 0 2px #FFE6A3;
+        }
+        .sas-logo-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .sas-text-logo {
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+        .sas-text-logo .sas-main {
+            font-size: 1.9rem;
+            color: #FFE6A3;
+            text-shadow: 0 2px 3px black;
+        }
+        .sas-text-logo .sas-sub {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #ffd966;
+            letter-spacing: 1.5px;
+        }
+
+        .title-badge {
+            text-align: right;
+        }
+        .title-badge h1 {
+            font-size: 2.3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #FFF7E0, #FFD966);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.2rem;
+        }
+        .tagline-flags {
+            display: flex;
+            gap: 1rem;
+            font-weight: 700;
+            color: #ffeaaf;
+            background: rgba(0,0,0,0.3);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+        }
+
+        /* COUNTDOWN TIMER */
+        .countdown-section {
+            background: linear-gradient(135deg, #1a3a36, #0e2e2a);
+            padding: 1.2rem 2rem;
+            border-top: 2px solid #f5c542;
+            border-bottom: 2px solid #f5c542;
+            text-align: center;
+        }
+        .countdown-title {
+            color: #FFE6A3;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.8rem;
+        }
+        .countdown-timer {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .countdown-block {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            padding: 0.6rem 1.2rem;
+            border-radius: 16px;
+            min-width: 85px;
+            text-align: center;
+            border: 1px solid #ffd96680;
+        }
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #FFD966;
+            line-height: 1;
+            font-family: monospace;
+        }
+        .countdown-label {
+            font-size: 0.7rem;
+            color: #c7e6e0;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        .countdown-message {
+            color: #ffeaaf;
+            font-size: 0.8rem;
+            margin-top: 0.6rem;
+            font-weight: 500;
+        }
+
+        /* Contact link */
+        .contact-link-wrapper {
+            background: #fcf9f0;
+            padding: 0.7rem 2rem;
+            display: flex;
+            justify-content: center;
+            border-bottom: 1px solid #f0e2c5;
+        }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            padding: 0.5rem 1.6rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #1e4a46;
+            text-decoration: none;
+            border: 1px solid #e7dbbd;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .contact-link i { color: #e6b422; }
+        .contact-link:hover {
+            background: #1e3a38;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .form-main {
+            padding: 2rem 2.5rem;
+            background: #fefdf7;
+        }
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #f0e8da;
+            padding-bottom: 1.5rem;
+        }
+        .input-group {
+            flex: 1;
+            min-width: 190px;
+        }
+        .input-group label {
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #4e4632;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .input-group label span { color: #d43f1d; }
+        .input-group input {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid #e5ddcd;
+            border-radius: 28px;
+            background: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #f0b429;
+            box-shadow: 0 0 0 3px rgba(240,180,41,0.2);
+        }
+        .social-hint {
+            font-size: 0.65rem;
+            color: #8f7e60;
+            margin-top: 5px;
+        }
+
+        /* Groups section */
+        .groups-section h2 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: #1f534e;
+            border-left: 7px solid #f5b642;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .groups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+        .group-card {
+            background: white;
+            border-radius: 28px;
+            border: 1px solid #efe5d4;
+            overflow: hidden;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.03);
+            transition: all 0.2s;
+        }
+        .group-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        .group-header {
+            background: linear-gradient(95deg, #1a403b, #12302c);
+            padding: 0.7rem 1.2rem;
+            color: white;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+        .team-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.7rem 1rem;
+            border-bottom: 1px solid #f3ecdf;
+        }
+        .team-name {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .team-flag {
+            width: 30px;
+            height: 22px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            background: #e9e2d2;
+        }
+        .checkbox-tick input {
+            width: 20px;
+            height: 20px;
+            accent-color: #e6b422;
+            cursor: pointer;
+        }
+        .terms-section {
+            background: #f8f4ea;
+            border-radius: 32px;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0 1.8rem;
+        }
+        .terms-list {
+            list-style: none;
+        }
+        .terms-list li {
+            margin-bottom: 0.6rem;
+            font-size: 0.85rem;
+            display: flex;
+            gap: 8px;
+        }
+        .terms-list li i { color: #f0b429; margin-top: 3px; }
+        .agree-line {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 1.2rem;
+            font-weight: 700;
+        }
+        .submit-btn {
+            background: #1e3a38;
+            border: none;
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: white;
+            border-radius: 60px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 6px 0 #0e2a27;
+            transition: 0.1s linear;
+            margin-bottom: 1rem;
+        }
+        .submit-btn:hover {
+            background: #2a5b55;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 0 #0e2a27;
+        }
+        .thankyou-message {
+            text-align: center;
+            background: #eef6f0;
+            padding: 0.9rem;
+            border-radius: 60px;
+            font-weight: 600;
+            color: #1c6b5c;
+        }
+        footer {
+            text-align: center;
+            font-size: 0.7rem;
+            padding: 1rem;
+            color: #a39274;
+            border-top: 1px solid #eee5d6;
+        }
+        @media (max-width: 700px) {
+            .form-main { padding: 1.2rem; }
+            .hero-banner { padding: 1rem; }
+            .worldcup-trophy-corner { width: 70px; height: 70px; bottom: -10px; right: 10px; }
+            .countdown-block { min-width: 65px; padding: 0.4rem 0.8rem; }
+            .countdown-number { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="worldcup-container">
+    <!-- Banner -->
+    <div class="hero-banner">
+        <!-- WORLD CUP TROPHY -->
+        <div class="worldcup-trophy-corner">
+            <img id="worldCupTrophyImg" src="./image/download.jfif" alt="World Cup Trophy">
+        </div>
+        
+        <div class="banner-flex">
+            <!-- SAS LOGO -->
+            <div class="sas-brand">
+                <div class="sas-logo-image">
+                    <img id="sasLogoImg" src="./image/WhatsApp Image 2026-01-17 at 12.44.19 PM.jpeg" alt="SAS Logo">
+                </div>
+                <div class="sas-text-logo">
+                    <div class="sas-main">SAS</div>
+                    <div class="sas-sub">SURVEILLANCE & SECURITY</div>
+                </div>
+            </div>
+            <div class="title-badge">
+                <h1>🏆 WORLD CUP PREDICTION 2026</h1>
+                <div class="tagline-flags">
+                    <span>⚡ PREDICT.</span> <span>🔥 COMPETE.</span> <span>💥 WIN!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- COUNTDOWN TIMER -->
+    <div class="countdown-section">
+        <div class="countdown-title">
+            <i class="fas fa-hourglass-half"></i> COUNTDOWN TO WORLD CUP 2026 <i class="fas fa-futbol"></i>
+        </div>
+        <div class="countdown-timer" id="countdownTimer">
+            <div class="countdown-block"><div class="countdown-number" id="days">--</div><div class="countdown-label">Days</div></div>
+            <div class="countdown-block"><div class="countdown-number" id="hours">--</div><div class="countdown-label">Hours</div></div>
+            <div class="countdown-block"><div class="countdown-number" id="minutes">--</div><div class="countdown-label">Minutes</div></div>
+            <div class="countdown-block"><div class="countdown-number" id="seconds">--</div><div class="countdown-label">Seconds</div></div>
+        </div>
+        <div class="countdown-message" id="countdownMessage">Loading countdown...</div>
+    </div>
+
+    <div class="contact-link-wrapper">
+        <a href="#" id="contactScrollLink" class="contact-link">
+            <i class="fas fa-envelope"></i> CONTACT SAS PREDICTION TEAM
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <div class="form-main">
+        <form id="predictionForm">
+            <div class="contact-grid" id="contactInfoGrid">
+                <div class="input-group">
+                    <label>First Name <span>*</span></label>
+                    <input type="text" id="firstName" placeholder="Enter your first name">
+                </div>
+                <div class="input-group">
+                    <label>Last Name <span>*</span></label>
+                    <input type="text" id="lastName" placeholder="Enter your last name">
+                </div>
+                <div class="input-group">
+                    <label>Social Media Handle <span>*</span></label>
+                    <input type="text" id="socialHandle" placeholder="@yourhandle">
+                    <div class="social-hint">(Instagram, X, Facebook, etc.)</div>
+                </div>
+            </div>
+
+            <div class="groups-section">
+                <h2><i class="fas fa-globe-americas"></i> GROUP STAGE PREDICTION · 2026 OFFICIAL DRAW</h2>
+                <p style="margin-bottom: 1rem; font-size: 0.9rem; color:#6b5a3d;">✅ Tick the box for your predicted winner in each group.</p>
+                <div class="groups-grid" id="groupsContainer"></div>
+            </div>
+
+            <div class="terms-section">
+                <ul class="terms-list">
+                    <li><i class="fas fa-check-circle"></i> Only one entry per person is allowed.</li>
+                    <li><i class="fas fa-check-circle"></i> All predictions must be submitted before the start of the World Cup.</li>
+                    <li><i class="fas fa-check-circle"></i> Correct predictions will earn points. The highest scorer wins!</li>
+                    <li><i class="fas fa-check-circle"></i> In case of a tie, the winner will be selected randomly.</li>
+                    <li><i class="fas fa-check-circle"></i> SAS (Surveillance and Security) reserves the right to amend the terms and conditions.</li>
+                </ul>
+                <div class="agree-line">
+                    <input type="checkbox" id="termsCheckbox">
+                    <label for="termsCheckbox">I agree to the Terms & Conditions. <span style="color:#c0392b;">*</span></label>
+                </div>
+            </div>
+
+            <button type="button" id="submitBtn" class="submit-btn">
+                <i class="fas fa-pen-fancy"></i> SUBMIT MY PREDICTION
+            </button>
+            <div id="formFeedback" class="thankyou-message" style="display: none;"></div>
+        </form>
+        <footer>© SAS Surveillance and Security — Official 2026 World Cup Groups. 🏴󠁧󠁢󠁳󠁣󠁴󠁿</footer>
+    </div>
+</div>
+
+<script>
+    // ========== WORKING COUNTDOWN TIMER ==========
+    const WORLD_CUP_DATE = new Date(2026, 5, 11, 0, 0, 0);
+    
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = WORLD_CUP_DATE - now;
+        
+        if (distance < 0) {
+            document.getElementById('days').innerHTML = "00";
+            document.getElementById('hours').innerHTML = "00";
+            document.getElementById('minutes').innerHTML = "00";
+            document.getElementById('seconds').innerHTML = "00";
+            document.getElementById('countdownMessage').innerHTML = "⚽ THE WORLD CUP HAS BEGUN! ⚽";
+            return;
+        }
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
+        document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
+        
+        if (days < 7 && days > 0) {
+            document.getElementById('countdownMessage').innerHTML = "🎉 LESS THAN A WEEK TO GO! Submit your predictions now! 🎉";
+        } else if (days === 0) {
+            document.getElementById('countdownMessage').innerHTML = "🔥 FINAL COUNTDOWN! Get your predictions ready! 🔥";
+        } else {
+            document.getElementById('countdownMessage').innerHTML = `🗓️ FIFA World Cup 2026 begins June 11, 2026 — ${days} days remaining!`;
+        }
+    }
+    
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    
+    // ========== WORLD CUP GROUPS ==========
+    const GROUPS_2026 = {
+        "A": ["Mexico", "South Africa", "South Korea", "Czech Republic"],
+        "B": ["Canada", "Switzerland", "Qatar", "Bosnia and Herzegovina"],
+        "C": ["Brazil", "Morocco", "Scotland", "Haiti"],
+        "D": ["United States", "Australia", "Paraguay", "Türkiye"],
+        "E": ["Germany", "Curacao", "Côte d'Ivoire", "Ecuador"],
+        "F": ["Netherlands", "Japan", "Tunisia", "Sweden"],
+        "G": ["Belgium", "Iran", "Egypt", "New Zealand"],
+        "H": ["Spain", "Uruguay", "Saudi Arabia", "Cape Verde"],
+        "I": ["France", "Senegal", "Norway", "Iraq"],
+        "J": ["Argentina", "Austria", "Algeria", "Jordan"],
+        "K": ["Portugal", "Colombia", "Uzbekistan", "DR Congo"],
+        "L": ["England", "Croatia", "Ghana", "Panama"]
+    };
+    
+    // Clean flag function - Scotland flag works like all others
+    function getFlagUrl(country) {
+        const flags = {
+            "Mexico": "mx", "South Africa": "za", "South Korea": "kr", "Czech Republic": "cz",
+            "Canada": "ca", "Switzerland": "ch", "Qatar": "qa", "Bosnia and Herzegovina": "ba",
+            "Brazil": "br", "Morocco": "ma", "Scotland": "gb-sct", "Haiti": "ht",
+            "United States": "us", "Australia": "au", "Paraguay": "py", "Türkiye": "tr",
+            "Germany": "de", "Curacao": "cw", "Côte d'Ivoire": "ci", "Ecuador": "ec",
+            "Netherlands": "nl", "Japan": "jp", "Tunisia": "tn", "Sweden": "se",
+            "Belgium": "be", "Iran": "ir", "Egypt": "eg", "New Zealand": "nz",
+            "Spain": "es", "Uruguay": "uy", "Saudi Arabia": "sa", "Cape Verde": "cv",
+            "France": "fr", "Senegal": "sn", "Norway": "no", "Iraq": "iq",
+            "Argentina": "ar", "Austria": "at", "Algeria": "dz", "Jordan": "jo",
+            "Portugal": "pt", "Colombia": "co", "Uzbekistan": "uz", "DR Congo": "cd",
+            "England": "gb-eng", "Croatia": "hr", "Ghana": "gh", "Panama": "pa"
+        };
+        
+        let code = flags[country] || "xx";
+        
+        // Scotland uses a reliable SVG flag from official CDN
+        if (country === "Scotland") {
+            return "https://cdn.jsdelivr.net/npm/country-flag-icons/3x2/GB-SCT.svg";
+        }
+        
+        return `https://flagcdn.com/w40/${code}.png`;
+    }
+    
+    let selectedWinners = {};
+    
+    function renderGroups() {
+        const container = document.getElementById('groupsContainer');
+        container.innerHTML = '';
+        
+        for (const [letter, teams] of Object.entries(GROUPS_2026)) {
+            selectedWinners[letter] = "";
+            const card = document.createElement('div');
+            card.className = 'group-card';
+            card.innerHTML = `
+                <div class="group-header"><span>GROUP ${letter}</span> <i class="fas fa-flag-checkered"></i></div>
+                <div class="group-teams" id="group-${letter}"></div>
+            `;
+            const teamsDiv = card.querySelector('.group-teams');
+            
+            teams.forEach(team => {
+                const row = document.createElement('div');
+                row.className = 'team-item';
+                const flagUrl = getFlagUrl(team);
+                row.innerHTML = `
+                    <div class="team-name">
+                        <img class="team-flag" src="${flagUrl}" alt="${team} flag">
+                        <span>${team}</span>
+                    </div>
+                    <div class="checkbox-tick">
+                        <input type="radio" name="group_${letter}" value="${team}" data-group="${letter}">
+                    </div>
+                `;
+                teamsDiv.appendChild(row);
+            });
+            
+            container.appendChild(card);
+        }
+        
+        // Add radio change listeners
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const group = this.getAttribute('data-group');
+                if (this.checked) {
+                    selectedWinners[group] = this.value;
+                }
+            });
+        });
+    }
+    
+    function validateForm() {
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const socialHandle = document.getElementById('socialHandle').value.trim();
+        const termsOk = document.getElementById('termsCheckbox').checked;
+        const errors = [];
+        
+        if (!firstName) errors.push("First name required");
+        if (!lastName) errors.push("Last name required");
+        if (!socialHandle) errors.push("Social media handle required");
+        if (!termsOk) errors.push("You must accept Terms & Conditions");
+        
+        const missingGroups = [];
+        for (const letter of Object.keys(GROUPS_2026)) {
+            if (!selectedWinners[letter]) missingGroups.push(`Group ${letter}`);
+        }
+        if (missingGroups.length) errors.push(`Pick winners for: ${missingGroups.join(', ')}`);
+        
+        return { valid: errors.length === 0, errors };
+    }
+    
+    function showMessage(msg, isError = false) {
+        const feedback = document.getElementById('formFeedback');
+        feedback.style.display = 'block';
+        feedback.innerHTML = isError ? `⚠️ ${msg}` : `🏆 ${msg} 🎉`;
+        feedback.style.background = isError ? '#ffe5e0' : '#dbefe8';
+        feedback.style.color = isError ? '#b53b2e' : '#146b5b';
+        setTimeout(() => {
+            if (!isError) feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+    }
+    
+    function handleSubmit() {
+        const { valid, errors } = validateForm();
+        if (!valid) {
+            showMessage(errors.join(' · '), true);
+            return;
+        }
+        
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const fullName = `${firstName} ${lastName}`;
+        
+        let predText = "";
+        for (const [group, winner] of Object.entries(selectedWinners)) {
+            predText += `Group ${group}: ${winner}  `;
+        }
+        
+        showMessage(`Thanks ${fullName}! Your picks: ${predText}. You are entered to win!`, false);
+        
+        const btn = document.getElementById('submitBtn');
+        btn.style.transform = 'scale(0.97)';
+        setTimeout(() => { btn.style.transform = ''; }, 150);
+    }
+    
+    // Setup contact link scroll
+    document.getElementById('contactScrollLink').addEventListener('click', function(e) {
+        e.preventDefault();
+        const contactGrid = document.getElementById('contactInfoGrid');
+        contactGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        contactGrid.style.background = '#fff7e8';
+        setTimeout(() => { contactGrid.style.background = ''; }, 800);
+    });
+    
+    // Initialize
+    renderGroups();
+    document.getElementById('submitBtn').addEventListener('click', handleSubmit);
+</script>
+</body>
+</html>
+```
