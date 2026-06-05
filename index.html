@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,19 +33,19 @@
             overflow: hidden;
         }
 
-        /* ========== STUNNING WORLD CUP BANNER - FULLY RESPONSIVE ========== */
+        /* ========== STUNNING WORLD CUP BANNER - MORE VISIBLE BACKGROUND ========== */
         .hero-banner {
             position: relative;
-            min-height: 280px;
-            background: linear-gradient(135deg, rgba(0,0,0,0.55), rgba(0,0,0,0.65)), 
-                        url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1200&h=500&fit=crop');
+            min-height: 380px;
+            background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1600&h=600&fit=crop');
             background-size: cover;
-            background-position: center 35%;
+            background-position: center 30%;
             padding: 1.5rem;
             overflow: hidden;
         }
 
-        /* Pattern overlay */
+        /* Pattern overlay - lighter for better visibility */
         .hero-banner::before {
             content: "";
             position: absolute;
@@ -54,18 +53,18 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: radial-gradient(circle at 20% 40%, rgba(255,215,0,0.12) 2%, transparent 2.5%),
-                              radial-gradient(circle at 80% 70%, rgba(255,215,0,0.1) 1.5%, transparent 2%);
+            background-image: radial-gradient(circle at 20% 40%, rgba(255,215,0,0.08) 2%, transparent 2.5%),
+                              radial-gradient(circle at 80% 70%, rgba(255,215,0,0.06) 1.5%, transparent 2%);
             background-size: 50px 50px, 70px 70px;
             pointer-events: none;
         }
 
-        /* Floating soccer balls - responsive sizes */
+        /* Floating soccer balls */
         .floating-ball {
             position: absolute;
             background: radial-gradient(circle at 35% 35%, white, #1a1a1a);
             border-radius: 50%;
-            opacity: 0.2;
+            opacity: 0.15;
             pointer-events: none;
             animation: floatBall 8s ease-in-out infinite;
         }
@@ -87,14 +86,13 @@
             50% { transform: translateY(-12px) rotate(180deg); }
         }
 
-        /* Trophy image */
         .trophy-overlay {
             position: absolute;
             right: 10px;
             bottom: 5px;
             width: 80px;
             height: 80px;
-            opacity: 0.6;
+            opacity: 0.7;
             pointer-events: none;
             z-index: 2;
             filter: drop-shadow(0 0 10px gold);
@@ -105,14 +103,13 @@
             object-fit: contain;
         }
 
-        /* Stadium silhouette */
         .stadium-silhouette {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 40px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.3));
+            background: linear-gradient(transparent, rgba(0,0,0,0.2));
             pointer-events: none;
         }
         .stadium-silhouette::before {
@@ -123,11 +120,10 @@
             width: 100%;
             font-size: 20px;
             letter-spacing: 8px;
-            color: rgba(255,215,0,0.25);
+            color: rgba(255,215,0,0.2);
             text-align: center;
         }
 
-        /* Flag strip */
         .flag-strip {
             position: absolute;
             top: 0;
@@ -154,56 +150,62 @@
             z-index: 15;
         }
 
-        /* SAS LOGO - mobile friendly */
+        /* SAS LOGO - PERFECTLY FITTED INSIDE THE CIRCLE */
         .sas-brand {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            background: rgba(0, 0, 0, 0.55);
+            gap: 1.2rem;
+            background: rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
-            padding: 0.4rem 1rem;
-            border-radius: 60px;
-            border: 1px solid rgba(255, 210, 90, 0.5);
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            border: 2px solid rgba(255, 210, 90, 0.8);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         .sas-logo-image {
-            width: 40px;
-            height: 40px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             background: #E8B530;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            box-shadow: 0 0 0 4px #FFD966, 0 0 0 8px rgba(255,217,102,0.2);
+            flex-shrink: 0;
         }
         .sas-logo-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
         }
         
         .sas-text-logo .sas-main {
-            font-size: 1.3rem;
+            font-size: 2.5rem;
+            font-weight: 900;
             color: #FFE6A3;
-            text-shadow: 0 2px 3px black;
-            line-height: 1;
+            text-shadow: 0 2px 5px black;
+            line-height: 1.1;
+            letter-spacing: 2px;
         }
         .sas-text-logo .sas-sub {
-            font-size: 0.55rem;
+            font-size: 0.8rem;
             font-weight: 700;
             color: #ffd966;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .title-badge {
             text-align: right;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.45);
             backdrop-filter: blur(8px);
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
         }
         .title-badge h1 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #FFF7E0, #FFD966);
             -webkit-background-clip: text;
@@ -213,13 +215,13 @@
         }
         .tagline-flags {
             display: flex;
-            gap: 0.5rem;
+            gap: 0.8rem;
             font-weight: 700;
             color: #ffeaaf;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
         }
 
-        /* COUNTDOWN TIMER - responsive */
+        /* COUNTDOWN TIMER */
         .countdown-section {
             background: linear-gradient(135deg, #1a3a36, #0e2e2a);
             padding: 0.8rem 1rem;
@@ -287,7 +289,7 @@
         .contact-link i { color: #e6b422; font-size: 0.8rem; }
 
         .form-main {
-            padding: 1.2rem;
+            padding: 1.5rem;
             background: #fefdf7;
         }
         .contact-grid {
@@ -300,23 +302,32 @@
         }
         .input-group {
             flex: 1;
-            min-width: 160px;
+            min-width: 180px;
         }
         .input-group label {
             font-weight: 800;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             color: #4e4632;
             display: block;
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
+        }
+        .input-group label span {
+            color: #c0392b;
         }
         .input-group input {
             width: 100%;
-            padding: 0.7rem 0.8rem;
+            padding: 0.75rem 0.9rem;
             border: 1.5px solid #e5ddcd;
-            border-radius: 24px;
+            border-radius: 28px;
             background: white;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #f0b429;
+            box-shadow: 0 0 0 3px rgba(240,180,41,0.2);
         }
         .social-hint {
             font-size: 0.6rem;
@@ -376,6 +387,7 @@
             width: 18px;
             height: 18px;
             accent-color: #e6b422;
+            cursor: pointer;
         }
         .terms-section {
             background: #f8f4ea;
@@ -401,17 +413,22 @@
             background: linear-gradient(95deg, #1a403b, #0e2e2a);
             border: none;
             width: 100%;
-            padding: 0.8rem;
-            font-size: 1.1rem;
+            padding: 0.9rem;
+            font-size: 1.2rem;
             font-weight: 800;
             color: white;
-            border-radius: 50px;
+            border-radius: 60px;
             cursor: pointer;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             margin-bottom: 0.8rem;
+            transition: transform 0.1s;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(95deg, #2a5b55, #1a403b);
         }
         .thankyou-message {
             text-align: center;
@@ -430,17 +447,19 @@
             border-top: 1px solid #eee5d6;
         }
 
-        /* Mobile specific adjustments */
+        /* Mobile responsive */
         @media (max-width: 640px) {
             body { padding: 0.8rem; }
-            .hero-banner { min-height: 220px; padding: 1rem; }
-            .title-badge h1 { font-size: 0.9rem; white-space: normal; }
-            .banner-flex { flex-direction: column; align-items: flex-start; }
-            .title-badge { text-align: left; width: 100%; }
-            .sas-brand { align-self: flex-start; }
+            .hero-banner { min-height: 320px; padding: 1rem; }
+            .title-badge h1 { font-size: 0.9rem; white-space: normal; text-align: center; }
+            .banner-flex { flex-direction: column; align-items: center; }
+            .title-badge { text-align: center; width: 100%; }
+            .sas-brand { align-self: center; padding: 0.5rem 1.2rem; gap: 0.8rem; }
+            .sas-logo-image { width: 70px; height: 70px; }
+            .sas-text-logo .sas-main { font-size: 1.5rem; }
+            .sas-text-logo .sas-sub { font-size: 0.55rem; }
             .floating-ball:nth-child(1) { width: 25px; height: 25px; }
             .floating-ball:nth-child(2) { width: 35px; height: 35px; }
-            .floating-ball:nth-child(3) { width: 20px; height: 20px; }
             .trophy-overlay { width: 55px; height: 55px; }
             .countdown-block { min-width: 50px; padding: 0.2rem 0.4rem; }
             .countdown-number { font-size: 1rem; }
@@ -451,14 +470,15 @@
 
         @media (min-width: 641px) and (max-width: 900px) {
             .title-badge h1 { font-size: 1.1rem; }
-            .banner-flex { gap: 0.8rem; }
             .groups-grid { grid-template-columns: repeat(2, 1fr); }
+            .sas-logo-image { width: 85px; height: 85px; }
+            .sas-text-logo .sas-main { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 <div class="worldcup-container">
-    <!-- RESPONSIVE WORLD CUP BANNER WITH MULTIPLE DESIGNS -->
+    <!-- WORLD CUP BANNER - MORE VISIBLE BACKGROUND -->
     <div class="hero-banner">
         <div class="flag-strip"></div>
         <div class="floating-ball"></div>
@@ -467,14 +487,15 @@
         <div class="floating-ball"></div>
         
         <div class="trophy-overlay">
-            <img src="./image/download.jfif" alt="World Cup Trophy">
+            <img src="./image/download.jfif" alt="World Cup Trophy" onerror="this.src='https://placehold.co/80x80/FFD700/8B5A2B?text=🏆'">
         </div>
         <div class="stadium-silhouette"></div>
         
         <div class="banner-flex">
+            <!-- SAS LOGO - PERFECTLY FITTED INSIDE CIRCLE BOX -->
             <div class="sas-brand">
                 <div class="sas-logo-image">
-                    <img src="./image/WhatsApp Image 2026-01-17 at 12.44.19 PM.jpeg" alt="SAS Logo">
+                    <img src="./image/WhatsApp Image 2026-01-17 at 12.44.19 PM.jpeg" alt="SAS Logo" style="width:100%; height:100%; object-fit:cover; object-position:center;" onerror="this.src='https://placehold.co/110x110/E8B530/1a2f2b?text=SAS'">
                 </div>
                 <div class="sas-text-logo">
                     <div class="sas-main">SAS</div>
@@ -521,6 +542,11 @@
                 <div class="input-group">
                     <label>Last Name <span>*</span></label>
                     <input type="text" id="lastName" placeholder="Enter your last name">
+                </div>
+                <div class="input-group">
+                    <label>Phone Number <span>*</span></label>
+                    <input type="tel" id="phoneNumber" placeholder="+1 234 567 8900">
+                    <div class="social-hint">(Include country code)</div>
                 </div>
                 <div class="input-group">
                     <label>Social Media Handle <span>*</span></label>
@@ -679,12 +705,14 @@
     function validateForm() {
         const firstName = document.getElementById('firstName').value.trim();
         const lastName = document.getElementById('lastName').value.trim();
+        const phoneNumber = document.getElementById('phoneNumber').value.trim();
         const socialHandle = document.getElementById('socialHandle').value.trim();
         const termsOk = document.getElementById('termsCheckbox').checked;
         const errors = [];
         
         if (!firstName) errors.push("First name required");
         if (!lastName) errors.push("Last name required");
+        if (!phoneNumber) errors.push("Phone number required");
         if (!socialHandle) errors.push("Social media handle required");
         if (!termsOk) errors.push("Accept Terms & Conditions");
         
@@ -717,6 +745,7 @@
         
         const firstName = document.getElementById('firstName').value.trim();
         const lastName = document.getElementById('lastName').value.trim();
+        const phoneNumber = document.getElementById('phoneNumber').value.trim();
         const fullName = `${firstName} ${lastName}`;
         
         let predText = "";
@@ -724,6 +753,7 @@
             predText += `${group}: ${winner}  `;
         }
         
+        console.log("SAS Prediction Entry:", { fullName, phoneNumber, predictions: selectedWinners });
         showMessage(`Thanks ${fullName}! Your picks: ${predText}. You're entered to win!`, false);
         
         const btn = document.getElementById('submitBtn');
