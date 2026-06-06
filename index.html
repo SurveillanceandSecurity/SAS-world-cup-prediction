@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -138,52 +138,40 @@
             z-index: 10;
         }
 
-        .top-left-logo {
+        /* ========== LOGO SECTION - COMPLETELY VISIBLE, NO CROPPING ========== */
+        .top-left-logo-wrapper {
             position: absolute;
-            top: 20px;
-            left: 25px;
-            z-index: 20;
-            background: rgba(0, 0, 0, 0.55);
-            backdrop-filter: blur(10px);
-            border-radius: 60px;
-            padding: 8px 20px 8px 12px;
-            border: 2px solid rgba(255, 210, 90, 0.8);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            top: 15px;
+            left: 10px;
+            z-index: 25;
         }
         
-        .top-left-logo-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: #E8B530;
+        /* Simple container - NO cropping, shows FULL logo */
+        .logo-container {
             display: flex;
             align-items: center;
             justify-content: center;
-            overflow: hidden;
-            box-shadow: 0 0 0 3px #FFD966;
-        }
-        .top-left-logo-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
+            background: transparent;
+            padding: 0;
+            margin: 0;
         }
         
-        .top-left-logo-text .sas-main {
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: #FFE6A3;
-            text-shadow: 0 2px 3px black;
-            letter-spacing: 1px;
+        /* CRITICAL FIX: Show the ENTIRE logo image without ANY cropping */
+        .logo-image {
+            width: auto;
+            height: auto;
+            max-width: 180px;
+            background: transparent;
+            display: block;
         }
-        .top-left-logo-text .sas-sub {
-            font-size: 0.55rem;
-            font-weight: 700;
-            color: #ffd966;
-            letter-spacing: 1px;
+        
+        .logo-image img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
         .center-title {
@@ -468,13 +456,11 @@
             border-top: 1px solid #eee5d6;
         }
 
+        /* Responsive adjustments */
         @media (max-width: 640px) {
             body { padding: 0.8rem; }
             .hero-banner { min-height: 320px; }
-            .top-left-logo { top: 10px; left: 10px; padding: 5px 12px 5px 8px; }
-            .top-left-logo-img { width: 45px; height: 45px; }
-            .top-left-logo-text .sas-main { font-size: 0.9rem; }
-            .top-left-logo-text .sas-sub { font-size: 0.4rem; }
+            .logo-image { max-width: 110px; }
             .center-title h1 { font-size: 1.2rem; }
             .center-title .tagline { font-size: 0.6rem; gap: 0.5rem; }
             .countdown-block { min-width: 50px; padding: 0.2rem 0.4rem; }
@@ -486,6 +472,11 @@
 
         @media (min-width: 641px) and (max-width: 900px) {
             .groups-grid { grid-template-columns: repeat(2, 1fr); }
+            .logo-image { max-width: 140px; }
+        }
+        
+        @media (min-width: 1200px) {
+            .logo-image { max-width: 200px; }
         }
     </style>
 </head>
@@ -503,18 +494,17 @@
         </div>
         <div class="stadium-silhouette"></div>
         
-        <div class="top-left-logo">
-            <div class="top-left-logo-img">
-                <img src="./image/WhatsApp Image 2026-01-17 at 12.44.19 PM.jpeg" alt="SAS Logo" style="width:100%; height:100%; object-fit:cover; object-position:center;" onerror="this.src='https://placehold.co/70x70/E8B530/1a2f2b?text=SAS'">
-            </div>
-            <div class="top-left-logo-text">
-                <div class="sas-main">SAS</div>
-                <div class="sas-sub">SURVEILLANCE & SECURITY</div>
+        <!-- ========== LOGO - COMPLETELY VISIBLE, EVERY PART SHOWS ========== -->
+        <div class="top-left-logo-wrapper">
+            <div class="logo-container">
+                <div class="logo-image">
+                    <img src="./image/WhatsApp Image 2026-01-17 at 12.44.19 PM.jpeg" alt="SAS Full Logo" onerror="this.src='https://placehold.co/200x150/E8B530/1a2f2b?text=SAS'">
+                </div>
             </div>
         </div>
         
         <div class="center-title">
-            <h1>🏆 WORLD CUP PREDICTION 2026</h1>
+            <h1>SAS WORLD CUP PREDICTION 2026</h1>
             <div class="tagline">
                 <span>⚡ PREDICT.</span> <span>🔥 COMPETE.</span> <span>💥 WIN!</span>
             </div>
@@ -874,4 +864,3 @@ ${formData.predictions}
 </script>
 </body>
 </html>
-```
