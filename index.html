@@ -1,5 +1,4 @@
-
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -546,12 +545,13 @@
         <form id="predictionForm">
             <div class="contact-grid" id="contactInfoGrid">
                 <div class="input-group">
-                    <label>First Name <span>*</span></label>
-                    <input type="text" id="firstName" placeholder="Enter your first name" required>
+                    <label>Full Name <span>*</span></label>
+                    <input type="text" id="fullName" placeholder="Enter your full name" required>
                 </div>
                 <div class="input-group">
-                    <label>Last Name <span>*</span></label>
-                    <input type="text" id="lastName" placeholder="Enter your last name" required>
+                    <label>Email Address <span>*</span></label>
+                    <input type="email" id="emailAddress" placeholder="youremail@example.com" required>
+                    <div class="social-hint">(For confirmation)</div>
                 </div>
                 <div class="input-group">
                     <label>Phone Number <span>*</span></label>
@@ -591,7 +591,7 @@
             </button>
             <div id="formFeedback" class="thankyou-message" style="display: none;"></div>
         </form>
-        <footer>© SAS Surveillance and Security — Official 2026 World Cup Groups.  </footer>
+        <footer>© SAS Surveillance and Security — Official 2026 World Cup Groups.</footer>
     </div>
 </div>
 
@@ -607,10 +607,7 @@
     // Initialize EmailJS with your public key
     emailjs.init(EMAILJS_PUBLIC_KEY);
     
-    // COUNTDOWN TIMER - FORCED TO SHOW 5 DAYS REMAINING
-    // World Cup 2026 starts June 11, 2026
-    // Today is June 6, 2026 - exactly 5 days remaining
-    // We set the date to June 11, 2026 at 00:00:00
+    // COUNTDOWN TIMER
     const WORLD_CUP_DATE = new Date(2026, 5, 11, 0, 0, 0);
     
     function updateCountdown() {
@@ -626,14 +623,11 @@
             return;
         }
         
-        // Calculate days, hours, minutes, seconds
         let days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
-        // FORCE DAYS TO BE 5 (since today is June 6, 2026 and World Cup is June 11, 2026)
-        // This ensures it always shows 5 days regardless of timezone
         if (days === 4) {
             days = 5;
         }
@@ -643,7 +637,6 @@
         document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
         document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
         
-        // Countdown message based on days remaining
         if (days === 5) {
             document.getElementById('countdownMessage').innerHTML = "🎉 ONLY 5 DAYS LEFT! Submit your predictions now! 🎉";
         } else if (days === 4) {
@@ -656,8 +649,6 @@
             document.getElementById('countdownMessage').innerHTML = "🎯 FINAL DAY! Submit before it's too late! 🎯";
         } else if (days === 0) {
             document.getElementById('countdownMessage').innerHTML = "🔥 LAST CHANCE! Tournament starts today! 🔥";
-        } else if (days < 7 && days > 5) {
-            document.getElementById('countdownMessage').innerHTML = "🎉 LESS THAN A WEEK TO GO! Submit now! 🎉";
         } else {
             document.getElementById('countdownMessage').innerHTML = `🗓️ World Cup 2026 begins June 11 — ${days} days left!`;
         }
@@ -755,16 +746,14 @@
     }
     
     async function sendEmail(formData) {
-        // Create email content with ALL form fields including First Name and Last Name
         const emailContent = `
 📋 NEW SAS WORLD CUP PREDICTION SUBMISSION 📋
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 👤 PERSONAL INFORMATION:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
-• First Name: ${formData.firstName}
-• Last Name: ${formData.lastName}
 • Full Name: ${formData.fullName}
+• Email Address: ${formData.emailAddress}
 • Phone Number: ${formData.phoneNumber}
 • Social Media Handle: ${formData.socialHandle}
 
@@ -784,10 +773,10 @@ ${formData.predictions}
         const templateParams = {
             to_email: YOUR_EMAIL,
             from_name: formData.fullName,
-            from_email: YOUR_EMAIL,
+            from_email: formData.emailAddress,
             message: emailContent,
-            first_name: formData.firstName,
-            last_name: formData.lastName,
+            full_name: formData.fullName,
+            email: formData.emailAddress,
             phone: formData.phoneNumber,
             social: formData.socialHandle,
             predictions: formData.predictions,
@@ -798,15 +787,15 @@ ${formData.predictions}
     }
     
     function validateForm() {
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
+        const fullName = document.getElementById('fullName').value.trim();
+        const emailAddress = document.getElementById('emailAddress').value.trim();
         const phoneNumber = document.getElementById('phoneNumber').value.trim();
         const socialHandle = document.getElementById('socialHandle').value.trim();
         const termsOk = document.getElementById('termsCheckbox').checked;
         const errors = [];
         
-        if (!firstName) errors.push("First name required");
-        if (!lastName) errors.push("Last name required");
+        if (!fullName) errors.push("Full name required");
+        if (!emailAddress) errors.push("Email address required");
         if (!phoneNumber) errors.push("Phone number required");
         if (!socialHandle) errors.push("Social media handle required");
         if (!termsOk) errors.push("You must agree to the participation rules");
@@ -835,18 +824,16 @@ ${formData.predictions}
             return;
         }
         
-        const firstName = document.getElementById('firstName').value.trim();
-        const lastName = document.getElementById('lastName').value.trim();
+        const fullName = document.getElementById('fullName').value.trim();
+        const emailAddress = document.getElementById('emailAddress').value.trim();
         const phoneNumber = document.getElementById('phoneNumber').value.trim();
         const socialHandle = document.getElementById('socialHandle').value.trim();
-        const fullName = `${firstName} ${lastName}`;
         const predictions = getFormattedPredictions();
         const submissionDate = new Date().toLocaleString();
         
         const formData = {
             fullName: fullName,
-            firstName: firstName,
-            lastName: lastName,
+            emailAddress: emailAddress,
             phoneNumber: phoneNumber,
             socialHandle: socialHandle,
             predictions: predictions,
@@ -862,7 +849,6 @@ ${formData.predictions}
             showMessage(`Thanks ${fullName}! Your predictions have been submitted successfully! Page will now refresh.`, false);
             console.log("Form Data Sent:", formData);
             
-            // Refresh the page after 2 seconds to show a fresh form
             setTimeout(function() {
                 window.location.reload();
             }, 2000);
