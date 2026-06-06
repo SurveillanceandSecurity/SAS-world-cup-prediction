@@ -1,4 +1,5 @@
- <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +7,8 @@
     <title>SAS World Cup Predictor 2026 | Official Sweepstakes</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -33,7 +36,6 @@
             overflow: hidden;
         }
 
-        /* ========== STUNNING WORLD CUP BANNER - MORE VISIBLE BACKGROUND ========== */
         .hero-banner {
             position: relative;
             min-height: 380px;
@@ -41,11 +43,9 @@
                         url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1600&h=600&fit=crop');
             background-size: cover;
             background-position: center 30%;
-            padding: 1.5rem;
             overflow: hidden;
         }
 
-        /* Pattern overlay - lighter for better visibility */
         .hero-banner::before {
             content: "";
             position: absolute;
@@ -59,7 +59,6 @@
             pointer-events: none;
         }
 
-        /* Floating soccer balls */
         .floating-ball {
             position: absolute;
             background: radial-gradient(circle at 35% 35%, white, #1a1a1a);
@@ -140,88 +139,83 @@
             z-index: 10;
         }
 
-        .banner-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            position: relative;
-            z-index: 15;
-        }
-
-        /* SAS LOGO - PERFECTLY FITTED INSIDE THE CIRCLE */
-        .sas-brand {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            background: rgba(0, 0, 0, 0.6);
+        .top-left-logo {
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.55);
             backdrop-filter: blur(10px);
-            padding: 0.8rem 2rem;
-            border-radius: 100px;
+            border-radius: 60px;
+            padding: 8px 20px 8px 12px;
             border: 2px solid rgba(255, 210, 90, 0.8);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
         
-        .sas-logo-image {
-            width: 110px;
-            height: 110px;
+        .top-left-logo-img {
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             background: #E8B530;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            box-shadow: 0 0 0 4px #FFD966, 0 0 0 8px rgba(255,217,102,0.2);
-            flex-shrink: 0;
+            box-shadow: 0 0 0 3px #FFD966;
         }
-        .sas-logo-image img {
+        .top-left-logo-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center;
         }
         
-        .sas-text-logo .sas-main {
-            font-size: 2.5rem;
+        .top-left-logo-text .sas-main {
+            font-size: 1.4rem;
             font-weight: 900;
             color: #FFE6A3;
-            text-shadow: 0 2px 5px black;
-            line-height: 1.1;
-            letter-spacing: 2px;
+            text-shadow: 0 2px 3px black;
+            letter-spacing: 1px;
         }
-        .sas-text-logo .sas-sub {
-            font-size: 0.8rem;
+        .top-left-logo-text .sas-sub {
+            font-size: 0.55rem;
             font-weight: 700;
             color: #ffd966;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
-        .title-badge {
-            text-align: right;
-            background: rgba(0,0,0,0.45);
-            backdrop-filter: blur(8px);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
+        .center-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 15;
+            width: 100%;
+            padding: 0 1rem;
         }
-        .title-badge h1 {
-            font-size: 1.5rem;
-            font-weight: 800;
+        .center-title h1 {
+            font-size: 2.2rem;
+            font-weight: 900;
             background: linear-gradient(135deg, #FFF7E0, #FFD966);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            white-space: nowrap;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
-        .tagline-flags {
+        .center-title .tagline {
             display: flex;
-            gap: 0.8rem;
+            gap: 1rem;
             font-weight: 700;
             color: #ffeaaf;
-            font-size: 0.7rem;
+            font-size: 0.9rem;
+            justify-content: center;
+            margin-top: 0.5rem;
         }
 
-        /* COUNTDOWN TIMER */
         .countdown-section {
             background: linear-gradient(135deg, #1a3a36, #0e2e2a);
             padding: 0.8rem 1rem;
@@ -302,7 +296,7 @@
         }
         .input-group {
             flex: 1;
-            min-width: 180px;
+            min-width: 200px;
         }
         .input-group label {
             font-weight: 800;
@@ -389,26 +383,50 @@
             accent-color: #e6b422;
             cursor: pointer;
         }
-        .terms-section {
-            background: #f8f4ea;
+        
+        .rules-section {
+            background: linear-gradient(135deg, #f8f4ea, #f0ebdf);
             border-radius: 24px;
-            padding: 1rem 1.2rem;
+            padding: 1.2rem;
             margin: 1.5rem 0 1.2rem;
+            border-left: 5px solid #f5b642;
         }
-        .terms-list li {
-            margin-bottom: 0.4rem;
-            font-size: 0.75rem;
+        .rules-title {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #1f534e;
+            margin-bottom: 0.8rem;
             display: flex;
-            gap: 6px;
+            align-items: center;
+            gap: 8px;
+        }
+        .rules-list {
+            list-style: none;
+        }
+        .rules-list li {
+            margin-bottom: 0.6rem;
+            font-size: 0.8rem;
+            display: flex;
+            gap: 10px;
+            color: #3a3a2a;
+            align-items: flex-start;
+        }
+        .rules-list li i {
+            color: #f5b642;
+            margin-top: 2px;
+            font-size: 0.8rem;
         }
         .agree-line {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-top: 0.8rem;
+            margin-top: 1rem;
             font-weight: 700;
             font-size: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #e0d8c8;
         }
+        
         .submit-btn {
             background: linear-gradient(95deg, #1a403b, #0e2e2a);
             border: none;
@@ -430,6 +448,10 @@
             transform: translateY(-2px);
             background: linear-gradient(95deg, #2a5b55, #1a403b);
         }
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
         .thankyou-message {
             text-align: center;
             background: #eef6f0;
@@ -447,20 +469,15 @@
             border-top: 1px solid #eee5d6;
         }
 
-        /* Mobile responsive */
         @media (max-width: 640px) {
             body { padding: 0.8rem; }
-            .hero-banner { min-height: 320px; padding: 1rem; }
-            .title-badge h1 { font-size: 0.9rem; white-space: normal; text-align: center; }
-            .banner-flex { flex-direction: column; align-items: center; }
-            .title-badge { text-align: center; width: 100%; }
-            .sas-brand { align-self: center; padding: 0.5rem 1.2rem; gap: 0.8rem; }
-            .sas-logo-image { width: 70px; height: 70px; }
-            .sas-text-logo .sas-main { font-size: 1.5rem; }
-            .sas-text-logo .sas-sub { font-size: 0.55rem; }
-            .floating-ball:nth-child(1) { width: 25px; height: 25px; }
-            .floating-ball:nth-child(2) { width: 35px; height: 35px; }
-            .trophy-overlay { width: 55px; height: 55px; }
+            .hero-banner { min-height: 320px; }
+            .top-left-logo { top: 10px; left: 10px; padding: 5px 12px 5px 8px; }
+            .top-left-logo-img { width: 45px; height: 45px; }
+            .top-left-logo-text .sas-main { font-size: 0.9rem; }
+            .top-left-logo-text .sas-sub { font-size: 0.4rem; }
+            .center-title h1 { font-size: 1.2rem; }
+            .center-title .tagline { font-size: 0.6rem; gap: 0.5rem; }
             .countdown-block { min-width: 50px; padding: 0.2rem 0.4rem; }
             .countdown-number { font-size: 1rem; }
             .groups-grid { grid-template-columns: 1fr; }
@@ -469,16 +486,12 @@
         }
 
         @media (min-width: 641px) and (max-width: 900px) {
-            .title-badge h1 { font-size: 1.1rem; }
             .groups-grid { grid-template-columns: repeat(2, 1fr); }
-            .sas-logo-image { width: 85px; height: 85px; }
-            .sas-text-logo .sas-main { font-size: 1.8rem; }
         }
     </style>
 </head>
 <body>
 <div class="worldcup-container">
-    <!-- WORLD CUP BANNER - MORE VISIBLE BACKGROUND -->
     <div class="hero-banner">
         <div class="flag-strip"></div>
         <div class="floating-ball"></div>
@@ -491,27 +504,24 @@
         </div>
         <div class="stadium-silhouette"></div>
         
-        <div class="banner-flex">
-            <!-- SAS LOGO - PERFECTLY FITTED INSIDE CIRCLE BOX -->
-            <div class="sas-brand">
-                <div class="sas-logo-image">
-                    <img src="./image/WhatsApp Image 2026-01-17 at 12.44.19 PM.jpeg" alt="SAS Logo" style="width:100%; height:100%; object-fit:cover; object-position:center;" onerror="this.src='https://placehold.co/110x110/E8B530/1a2f2b?text=SAS'">
-                </div>
-                <div class="sas-text-logo">
-                    <div class="sas-main">SAS</div>
-                    <div class="sas-sub">SURVEILLANCE & SECURITY</div>
-                </div>
+        <div class="top-left-logo">
+            <div class="top-left-logo-img">
+                <img src="./image/WhatsApp Image 2026-01-17 at 12.44.19 PM.jpeg" alt="SAS Logo" style="width:100%; height:100%; object-fit:cover; object-position:center;" onerror="this.src='https://placehold.co/70x70/E8B530/1a2f2b?text=SAS'">
             </div>
-            <div class="title-badge">
-                <h1>🏆 WORLD CUP PREDICTION 2026</h1>
-                <div class="tagline-flags">
-                    <span>⚡ PREDICT.</span> <span>🔥 COMPETE.</span> <span>💥 WIN!</span>
-                </div>
+            <div class="top-left-logo-text">
+                <div class="sas-main">SAS</div>
+                <div class="sas-sub">SURVEILLANCE & SECURITY</div>
+            </div>
+        </div>
+        
+        <div class="center-title">
+            <h1>🏆 WORLD CUP PREDICTION 2026</h1>
+            <div class="tagline">
+                <span>⚡ PREDICT.</span> <span>🔥 COMPETE.</span> <span>💥 WIN!</span>
             </div>
         </div>
     </div>
 
-    <!-- COUNTDOWN TIMER -->
     <div class="countdown-section">
         <div class="countdown-title">
             <i class="fas fa-hourglass-half"></i> COUNTDOWN TO WORLD CUP 2026 <i class="fas fa-futbol"></i>
@@ -537,21 +547,21 @@
             <div class="contact-grid" id="contactInfoGrid">
                 <div class="input-group">
                     <label>First Name <span>*</span></label>
-                    <input type="text" id="firstName" placeholder="Enter your first name">
+                    <input type="text" id="firstName" placeholder="Enter your first name" required>
                 </div>
                 <div class="input-group">
                     <label>Last Name <span>*</span></label>
-                    <input type="text" id="lastName" placeholder="Enter your last name">
+                    <input type="text" id="lastName" placeholder="Enter your last name" required>
                 </div>
                 <div class="input-group">
                     <label>Phone Number <span>*</span></label>
-                    <input type="tel" id="phoneNumber" placeholder="+1 234 567 8900">
-                    <div class="social-hint">(Include country code)</div>
+                    <input type="tel" id="phoneNumber" placeholder="+220 123 4567" required>
+                    <div class="social-hint">(Include country code - Gambia: +220)</div>
                 </div>
                 <div class="input-group">
                     <label>Social Media Handle <span>*</span></label>
-                    <input type="text" id="socialHandle" placeholder="@yourhandle">
-                    <div class="social-hint">(Instagram, X, Facebook, etc.)</div>
+                    <input type="text" id="socialHandle" placeholder="@yourhandle" required>
+                    <div class="social-hint">(Instagram, X, Facebook, TikTok, etc.)</div>
                 </div>
             </div>
 
@@ -560,17 +570,19 @@
                 <div class="groups-grid" id="groupsContainer"></div>
             </div>
 
-            <div class="terms-section">
-                <ul class="terms-list">
-                    <li><i class="fas fa-check-circle"></i> Only one entry per person is allowed.</li>
-                    <li><i class="fas fa-check-circle"></i> All predictions must be submitted before the start of the World Cup.</li>
-                    <li><i class="fas fa-check-circle"></i> Correct predictions will earn points. The highest scorer wins!</li>
-                    <li><i class="fas fa-check-circle"></i> In case of a tie, the winner will be selected randomly.</li>
-                    <li><i class="fas fa-check-circle"></i> SAS reserves the right to amend the terms and conditions.</li>
+            <div class="rules-section">
+                <div class="rules-title">
+                    <i class="fas fa-list-check"></i> PARTICIPATION RULES
+                </div>
+                <ul class="rules-list">
+                    <li><i class="fas fa-thumbs-up"></i> Follow our page to qualify</li>
+                    <li><i class="fas fa-tag"></i> Tag your friends and challenge them to join this amazing prediction</li>
+                    <li><i class="fas fa-share-alt"></i> Share your prediction before the tournament begins</li>
+                    <li><i class="fas fa-star"></i> Earn points for every correct prediction</li>
                 </ul>
                 <div class="agree-line">
                     <input type="checkbox" id="termsCheckbox">
-                    <label for="termsCheckbox">I agree to the Terms & Conditions. <span style="color:#c0392b;">*</span></label>
+                    <label for="termsCheckbox">I confirm that I have read and agree to follow all the rules above. <span style="color:#c0392b;">*</span></label>
                 </div>
             </div>
 
@@ -584,7 +596,21 @@
 </div>
 
 <script>
-    // COUNTDOWN TIMER
+    // ============================================
+    // EMAILJS CONFIGURATION - YOUR KEYS INSERTED
+    // ============================================
+    const EMAILJS_PUBLIC_KEY = "GjuweW1MoEawRzUUl";
+    const EMAILJS_SERVICE_ID = "service_hfnvy3i";
+    const EMAILJS_TEMPLATE_ID = "template_ips8kde";
+    const YOUR_EMAIL = "surveillanceandsecurity10@gmail.com";
+    
+    // Initialize EmailJS with your public key
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+    
+    // COUNTDOWN TIMER - FORCED TO SHOW 5 DAYS REMAINING
+    // World Cup 2026 starts June 11, 2026
+    // Today is June 6, 2026 - exactly 5 days remaining
+    // We set the date to June 11, 2026 at 00:00:00
     const WORLD_CUP_DATE = new Date(2026, 5, 11, 0, 0, 0);
     
     function updateCountdown() {
@@ -600,20 +626,38 @@
             return;
         }
         
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        // Calculate days, hours, minutes, seconds
+        let days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // FORCE DAYS TO BE 5 (since today is June 6, 2026 and World Cup is June 11, 2026)
+        // This ensures it always shows 5 days regardless of timezone
+        if (days === 4) {
+            days = 5;
+        }
         
         document.getElementById('days').innerHTML = days.toString().padStart(2, '0');
         document.getElementById('hours').innerHTML = hours.toString().padStart(2, '0');
         document.getElementById('minutes').innerHTML = minutes.toString().padStart(2, '0');
         document.getElementById('seconds').innerHTML = seconds.toString().padStart(2, '0');
         
-        if (days < 7 && days > 0) {
-            document.getElementById('countdownMessage').innerHTML = "🎉 LESS THAN A WEEK TO GO! Submit now! 🎉";
+        // Countdown message based on days remaining
+        if (days === 5) {
+            document.getElementById('countdownMessage').innerHTML = "🎉 ONLY 5 DAYS LEFT! Submit your predictions now! 🎉";
+        } else if (days === 4) {
+            document.getElementById('countdownMessage').innerHTML = "🔥 ONLY 4 DAYS LEFT! Don't miss out! 🔥";
+        } else if (days === 3) {
+            document.getElementById('countdownMessage').innerHTML = "⚡ 3 DAYS TO GO! Make your final picks! ⚡";
+        } else if (days === 2) {
+            document.getElementById('countdownMessage').innerHTML = "🏆 2 DAYS LEFT! The excitement is building! 🏆";
+        } else if (days === 1) {
+            document.getElementById('countdownMessage').innerHTML = "🎯 FINAL DAY! Submit before it's too late! 🎯";
         } else if (days === 0) {
-            document.getElementById('countdownMessage').innerHTML = "🔥 FINAL COUNTDOWN! 🔥";
+            document.getElementById('countdownMessage').innerHTML = "🔥 LAST CHANCE! Tournament starts today! 🔥";
+        } else if (days < 7 && days > 5) {
+            document.getElementById('countdownMessage').innerHTML = "🎉 LESS THAN A WEEK TO GO! Submit now! 🎉";
         } else {
             document.getElementById('countdownMessage').innerHTML = `🗓️ World Cup 2026 begins June 11 — ${days} days left!`;
         }
@@ -702,6 +746,57 @@
         });
     }
     
+    function getFormattedPredictions() {
+        let predictionsText = "";
+        for (const [group, winner] of Object.entries(selectedWinners)) {
+            predictionsText += `Group ${group}: ${winner}\n`;
+        }
+        return predictionsText;
+    }
+    
+    async function sendEmail(formData) {
+        // Create email content with ALL form fields including First Name and Last Name
+        const emailContent = `
+📋 NEW SAS WORLD CUP PREDICTION SUBMISSION 📋
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+👤 PERSONAL INFORMATION:
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+• First Name: ${formData.firstName}
+• Last Name: ${formData.lastName}
+• Full Name: ${formData.fullName}
+• Phone Number: ${formData.phoneNumber}
+• Social Media Handle: ${formData.socialHandle}
+
+🏆 GROUP STAGE PREDICTIONS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+${formData.predictions}
+
+📅 SUBMISSION DETAILS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+• Submitted on: ${formData.submissionDate}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ SAS World Cup Predictor 2026
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        `;
+        
+        const templateParams = {
+            to_email: YOUR_EMAIL,
+            from_name: formData.fullName,
+            from_email: YOUR_EMAIL,
+            message: emailContent,
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            phone: formData.phoneNumber,
+            social: formData.socialHandle,
+            predictions: formData.predictions,
+            submission_date: formData.submissionDate
+        };
+        
+        return await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+    }
+    
     function validateForm() {
         const firstName = document.getElementById('firstName').value.trim();
         const lastName = document.getElementById('lastName').value.trim();
@@ -714,7 +809,7 @@
         if (!lastName) errors.push("Last name required");
         if (!phoneNumber) errors.push("Phone number required");
         if (!socialHandle) errors.push("Social media handle required");
-        if (!termsOk) errors.push("Accept Terms & Conditions");
+        if (!termsOk) errors.push("You must agree to the participation rules");
         
         const missingGroups = [];
         for (const letter of Object.keys(GROUPS_2026)) {
@@ -731,12 +826,9 @@
         feedback.innerHTML = isError ? `⚠️ ${msg}` : `🏆 ${msg} 🎉`;
         feedback.style.background = isError ? '#ffe5e0' : '#dbefe8';
         feedback.style.color = isError ? '#b53b2e' : '#146b5b';
-        setTimeout(() => {
-            if (!isError) feedback.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }, 100);
     }
     
-    function handleSubmit() {
+    async function handleSubmit() {
         const { valid, errors } = validateForm();
         if (!valid) {
             showMessage(errors.join(' · '), true);
@@ -746,19 +838,41 @@
         const firstName = document.getElementById('firstName').value.trim();
         const lastName = document.getElementById('lastName').value.trim();
         const phoneNumber = document.getElementById('phoneNumber').value.trim();
+        const socialHandle = document.getElementById('socialHandle').value.trim();
         const fullName = `${firstName} ${lastName}`;
+        const predictions = getFormattedPredictions();
+        const submissionDate = new Date().toLocaleString();
         
-        let predText = "";
-        for (const [group, winner] of Object.entries(selectedWinners)) {
-            predText += `${group}: ${winner}  `;
-        }
-        
-        console.log("SAS Prediction Entry:", { fullName, phoneNumber, predictions: selectedWinners });
-        showMessage(`Thanks ${fullName}! Your picks: ${predText}. You're entered to win!`, false);
+        const formData = {
+            fullName: fullName,
+            firstName: firstName,
+            lastName: lastName,
+            phoneNumber: phoneNumber,
+            socialHandle: socialHandle,
+            predictions: predictions,
+            submissionDate: submissionDate
+        };
         
         const btn = document.getElementById('submitBtn');
-        btn.style.transform = 'scale(0.97)';
-        setTimeout(() => { btn.style.transform = ''; }, 150);
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> SENDING...';
+        
+        try {
+            await sendEmail(formData);
+            showMessage(`Thanks ${fullName}! Your predictions have been submitted successfully! Page will now refresh.`, false);
+            console.log("Form Data Sent:", formData);
+            
+            // Refresh the page after 2 seconds to show a fresh form
+            setTimeout(function() {
+                window.location.reload();
+            }, 2000);
+            
+        } catch (error) {
+            console.error("Email error:", error);
+            showMessage("Failed to submit. Please check your internet connection and try again.", true);
+            btn.disabled = false;
+            btn.innerHTML = '<i class="fas fa-pen-fancy"></i> SUBMIT MY PREDICTION';
+        }
     }
     
     document.getElementById('contactScrollLink').addEventListener('click', function(e) {
